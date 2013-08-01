@@ -1,1 +1,1 @@
-nodemon app.js
+nodemon Phantasm.js
