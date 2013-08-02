@@ -85,6 +85,16 @@ routes['print'] = function (req, res) {
             imageformat = req.body.imageformat;
         }
 
+        var viewportheight = 800; //default
+        if (req.body.viewportheight) {
+            viewportheight = req.body.viewportheight;
+        }
+
+        var viewportwidth = 1200; //default
+        if (req.body.viewportwidth) {
+            viewportwidth = req.body.viewportwidth;
+        }
+
         var format = "html"; //default
         if (req.body.format) {
             format = req.body.format;
@@ -107,7 +117,7 @@ routes['print'] = function (req, res) {
             return ph.createPage(function (err, page) {
                 //set size
                 console.log("Setting Page size...");
-                page.set('viewportSize', { width: 1200, height: 800 }, function (err) {
+                page.set('viewportSize', { width: viewportwidth, height: viewportheight }, function (err) {
                     console.log("Opening Page...");
                     return page.open(url, function (status) {
                         console.log("Opened Page...");
@@ -133,7 +143,7 @@ routes['print'] = function (req, res) {
                                         console.log(preFunk);
                                         preFunk();
                                     } catch (e) {
-
+                                        console.log("error executing code block: " + e.message);
                                     }
                                     result.delay = pedelay;// Up the wait time to make sure this block has time to execute.  Might want to expose this to API
                                     console.log("Executed pre-render logic.");
@@ -153,9 +163,9 @@ routes['print'] = function (req, res) {
 
                             }, function (err, result) {
                                 //Callback for page.evaluate
-                                var preCodeDelay = 50; //ms
                                 setTimeout(function () {
                                     var outputURL = req.protocol + "://" + req.get('host') + "/output/";
+                                    //var outputURL = "http://services.spatialdev.com/output/";
                                     var filename = 'phantomoutput' + shortId.generate() + '.' + imageformat;
                                     if (result && result.clipRect) {
                                         //Clip
@@ -165,7 +175,7 @@ routes['print'] = function (req, res) {
                                                 ph.exit();
                                                 //Render
                                                 if (format == "html") {
-                                                    res.render('print', { imageLink: filename, errorMessage: err, imageformat: req.body.imageformat,pedelay:req.body.pedelay, format: req.body.format, url: req.body.url, delay: req.body.delay, selector: req.body.selector, codeblock: req.body.codeblock, breadcrumbs: [{ link: "/print", name: "Home" }, { link: "", name: "Print" }] })
+                                                    res.render('print', { imageLink: filekname, errorMessage: err, imageformat: req.body.imageformat,pedelay:req.body.pedelay, format: req.body.format, url: req.body.url, delay: req.body.delay, selector: req.body.selector, codeblock: req.body.codeblock, breadcrumbs: [{ link: "/print", name: "Home" }, { link: "", name: "Print" }] })
                                                 }
                                                 else if (format == "json") {
                                                     //Respond with JSON
@@ -178,7 +188,7 @@ routes['print'] = function (req, res) {
                                     else {
                                         //Don't clip                                 
                                         return page.render('output/' + filename, function () {
-                                            console.log('Page Rendered - ' + (err || result));
+                                            console.log('Page Rendered.');
                                             ph.exit();
                                             //Render
                                             if (format == "html") {
@@ -192,7 +202,7 @@ routes['print'] = function (req, res) {
                                             }
                                         });
                                     }
-                                }, result.delay); //wait a sec before executing any pre-code stuff.
+                                },pedelay); //wait a sec before executing any pre-code stuff.
 
 
                             }, { codeblock: codeblock, selector: selector }); //arguments to be passed to page.evaluate
