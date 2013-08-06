@@ -39,8 +39,8 @@ if ('development' == app.get('env')) {
 
 //Define Routes
 routes['print'] = function (req, res) {
-    if (JSON.stringify(req.body) != '{}') {
 
+    if (JSON.stringify(req.body) != '{}') {
         //Gather options
         var url = "";
         if (req.body.url) {
@@ -179,7 +179,8 @@ routes['print'] = function (req, res) {
                                                 }
                                                 else if (format == "json") {
                                                     //Respond with JSON
-                                                    res.header("Content-Type:", "application/json");
+                                                    //res.header("Content-Type:", "application/json");
+                                                    res.writeHead(200, { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
                                                     res.end(JSON.stringify({ image: outputURL + filename }));
                                                 }
                                             });
@@ -197,7 +198,8 @@ routes['print'] = function (req, res) {
                                             }
                                             else if (format == "json") {
                                                 //Respond with JSON
-                                                res.header("Content-Type:", "application/json");
+                                                //res.header("Content-Type:", "application/json");
+                                                res.writeHead(200, { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
                                                 res.end(JSON.stringify({ image: outputURL + filename }));
                                             }
                                         });
