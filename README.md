@@ -13,7 +13,7 @@ PhantomJS
 
 Install PhantomJS and make sure it's in your PATH.
 
-git clone https://github.com/apollolm/phantasm.git
+`git clone https://github.com/apollolm/phantasm.git`
 
 ...and then...
 
