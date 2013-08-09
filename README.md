@@ -17,11 +17,11 @@ Install PhantomJS and make sure it's in your PATH.
 
 ...and then...
 
-npm install
+'npm install'
 
 ## Try it out
 
-node phantasm.js
+'node phantasm.js'
 
 That should start the service on localhost, port 3000.
 
