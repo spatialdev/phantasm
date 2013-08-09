@@ -46,7 +46,7 @@ Use the Page Load Delay to wait a given number of milliseconds after the page ha
 #### Image Format:
 PhantomJS can output .png, .jpg, .gif and .pdf
 
-##### Response Format:
+#### Response Format:
 html or json
 
 html will render the result to the web form that was used to submit the request.  Just used to test out your settings mostly.
