@@ -12,11 +12,7 @@ block content
 				td
 					input(id='url',type='text',value=url,placeholder='http://www.someurl.com/index.php?matador=yes',name='url')
 
-			tr
-				td
-					label(for='delay') Page Load Delay (how long to wait before trying to capture page state, in milliseconds)
-				td
-					input(id='delay',type='text',value=delay,placeholder='3000',name='delay')
+
 
 
 
@@ -55,9 +51,15 @@ block content
 
 			tr
 				td
-					label(for='pedelay') Pre-execution Delay (how long to wait after running pre-execution javascript, in milliseconds)
+					label(for='viewportheight') Browser viewport height (px)
 				td
-					input(id='pedelay',type='text',value=pedelay,placeholder='3000',name='pedelay')
+					input(id='viewportheight',type='text',value=viewportheight,placeholder='800',name='viewportheight')
+
+			tr
+				td
+					label(for='viewportwidth') Browser viewport width (px)
+				td
+					input(id='viewportwidth',type='text',value=viewportwidth,placeholder='1200',name='viewportwidth')
 			
 
 		div(data-role='fieldcontain')   
