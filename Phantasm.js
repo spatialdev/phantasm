@@ -189,10 +189,9 @@ routes['print'] = function (req, res) {
                                         // See if all outgoing requests have completed
                                         for (var i = 1; i < resources.length; ++i) {
                                             console.log(resources[i]);
-                                            if (resources[i] != 'end') {
-                                                return false;
+                                            if (!resources[i] || resources[i] != 'end') {
                                                 console.log("outgoing requests still pending.");
-
+                                                return false;
                                             }
                                         }
                                         console.log("outgoing requests all complete, moving on.");
@@ -213,7 +212,7 @@ routes['print'] = function (req, res) {
                                                     ph.exit();
                                                     //Render
                                                     if (format == "html") {
-                                                        res.render('print', { imageLink: filekname, errorMessage: err, imageformat: req.body.imageformat, format: req.body.format, viewportwidth: req.body.viewportwidth, viewportheight: req.body.viewportheight, url: req.body.url, selector: req.body.selector, codeblock: req.body.codeblock, breadcrumbs: [{ link: "/print", name: "Home" }, { link: "", name: "Print" }] })
+                                                        res.render('print', { imageLink: filename, errorMessage: err, imageformat: req.body.imageformat, format: req.body.format, viewportwidth: req.body.viewportwidth, viewportheight: req.body.viewportheight, url: req.body.url, selector: req.body.selector, codeblock: req.body.codeblock, breadcrumbs: [{ link: "/print", name: "Home" }, { link: "", name: "Print" }] })
                                                     }
                                                     else if (format == "json") {
                                                         //Respond with JSON
@@ -333,7 +332,7 @@ function waitFor(testFx, onReady, timeOutMillis) {
                 if (!condition) {
                     // If condition still not fulfilled (timeout but condition is 'false')
                     console.log("'waitFor()' timeout");
-                    phantom.exit(1);
+                    ph.exit(1);
                 } else {
                     // Condition fulfilled (timeout and/or condition is 'true')
                     console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");

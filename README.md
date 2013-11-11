@@ -60,11 +60,6 @@ Use a CSS selector to only return an image for the matching node's area. #mapDiv
 This is the good part.
 You can send javascript code to be executed in the page that's been loaded before the image is captured.  Use this to modify the page however you'd like.  If the page you're loading uses jQuery, then you can use jQuery functions to hide or show page elements.  Use function calls to execute custom logic.
 
-#### Pre-Execution Delay:
-How many milliseconds to wait AFTER your Pre-execution javascript is run before capturing the image.
-For example, if you call a function that takes a few seconds to kick in, then add a delay of 5 seconds to make sure the code finishes and any page modifications have been made.
-
-
 
 
 
