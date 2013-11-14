@@ -197,7 +197,7 @@ routes['print'] = function (req, res) {
                                         console.log("outgoing requests all complete, moving on.");
 
                                         return true;
-                                    }, function () {
+                                    }, function (status) {
                                         //Callback for when all initial pageload resource requests have ended.
 
 
@@ -245,7 +245,7 @@ routes['print'] = function (req, res) {
                                         //},pedelay); //wait a sec before executing any pre-code stuff.
 
 
-                                    }, 15000); //The Timeout milliseconds.  After this, give up and move on
+                                    }, 50000); //The Timeout milliseconds.  After this, give up and move on
 
 
                                 }, 1000); //Built in delay to let the execution block have a chance to send out requests.
@@ -332,11 +332,13 @@ function waitFor(testFx, onReady, timeOutMillis) {
                 if (!condition) {
                     // If condition still not fulfilled (timeout but condition is 'false')
                     console.log("'waitFor()' timeout");
-                    ph.exit(1);
+                    typeof (onReady) === "string" ? eval(onReady) : onReady('timeout'); //< Do what it's supposed to do once the condition is fulfilled
+                    clearInterval(interval); //< Stop this interval
+                    //ph.exit(1);
                 } else {
                     // Condition fulfilled (timeout and/or condition is 'true')
                     console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");
-                    typeof (onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
+                    typeof (onReady) === "string" ? eval(onReady) : onReady('success'); //< Do what it's supposed to do once the condition is fulfilled
                     clearInterval(interval); //< Stop this interval
                 }
             }
