@@ -76,7 +76,7 @@ You can send a javascript ajax request to this service using a POST request.  He
 	}
 
 ####Output Image
-![alt text](https://raw.github.com/spatialdev/phantasm/master/docs/screens/SimpleOutput.png "Simple Output")
+![alt text](https://raw.github.com/apollolm/phantasm/master/docs/screens/SimpleOutput.png "Simple Output")
 
 
 ###Simplest example
