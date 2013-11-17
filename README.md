@@ -3,35 +3,6 @@ phantasm
 
 ## Overview
 
-
-
-## Dependencies
-
-PhantomJS
-
-## Installation
-
-Install PhantomJS and make sure it's in your PATH.
-
-`git clone https://github.com/apollolm/phantasm.git`
-
-...and then...
-
-`npm install`
-
-## Try it out
-
-`node phantasm.js`
-
-That should start the service on localhost, port 3000.
-
-Open your browser and type http://localhost:3000
-
-
-
-
-## Overview
-
 Phantasm is a node.js web service for exporting html web pages to PDF, PNG, JPG or GIF.  It is mainly a wrapper around phantomjs.
 
 Required arguments are:
@@ -103,7 +74,10 @@ You can send a javascript ajax request to this service using a POST request.  He
 	{
 	  "image":"http://print.spatialdev.com/output/phantomoutput12345.png"
 	}
-	
+
+####Output Image
+![alt text](https://raw.github.com/spatialdev/phantasm/master/docs/screens/SimpleOutput.png "Simple Output")
+
 
 ###Simplest example
 You want to post
