@@ -5,8 +5,6 @@
 var phantom = require('node-phantom');
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , settings = require('./settings')
   , http = require('http')
   , path = require('path')
