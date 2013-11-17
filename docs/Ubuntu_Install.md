@@ -91,4 +91,4 @@ Edit the crontab file to add your own script to the list of items to be schedule
 	sudo crontab -e
 
 Once open, add an entry (every hour, delete pngs from output folder):
-	0 * * * * find ~/phantasm/output -name "*.png" -mtime + 60 -exec rm {} \;
+	0 * * * * find ~/phantasm/output -mmin + 60 -exec rm -f {} \;
