@@ -239,8 +239,8 @@ routes['print'] = function (req, res) {
 
 
 //Define Paths
-//Root Request - redirect to print
-app.get('/', function (req, res) { res.redirect('/print') });
+//Root Request
+app.all('/', routes['print']);
 
 //Print API
 app.all('/print', routes['print']);

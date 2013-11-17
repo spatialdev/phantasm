@@ -84,3 +84,11 @@ cd to the phantasm folder, then
 ### To stop forever service
 
 	sudo forever stop 0
+
+
+### Add a utility to delete output files older than X minutes
+Edit the crontab file to add your own script to the list of items to be scheduled.
+	sudo crontab -e
+
+Once open, add an entry (every hour, delete pngs from output folder):
+	0 * * * * find ~/phantasm/output -name "*.png" -mtime + 60 -exec rm {} \;
