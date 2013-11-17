@@ -6,20 +6,7 @@ html
 	body
 		header
 			h1 Phantasm printing API
-		div.breadcrumbs
-			-if(breadcrumbs){
-				each crumb in breadcrumbs
-					-if(crumb.link == ""){
-						|#{crumb.name}
-					-}else{
-						a(href=crumb.link) #{crumb.name}
-						-if(breadcrumbs.length > 1){
-							&nbsp;
-							>
-							&nbsp;
-						-}
-					-}
-			-}
+
 		.container
 			.main-content
 				block content

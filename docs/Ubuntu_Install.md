@@ -88,7 +88,7 @@ cd to the phantasm folder, then
 
 ### Add a utility to delete output files older than X minutes
 Edit the crontab file to add your own script to the list of items to be scheduled.
-	sudo crontab -e
+	crontab -e
 
-Once open, add an entry (every hour, delete pngs from output folder):
-	0 * * * * find ~/phantasm/output -mmin + 60 -exec rm -f {} \;
+Once open, add an entry (every hour, delete pngs from output folder)....currently not working:
+	0 * * * * find ~/phantasm/output -mmin +60 -exec rm -f {} \;
