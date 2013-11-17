@@ -7,6 +7,7 @@ var phantom = require('node-phantom');
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , settings = require('./settings')
   , http = require('http')
   , path = require('path')
   , flow = require('flow')
@@ -17,8 +18,8 @@ var app = express();
 var routes = [];
 
 // all environments
-app.set('ipaddr', 'localhost');
-app.set('port', process.env.PORT || 3000);
+app.set('ipaddr', settings.application.ip);
+app.set('port', process.env.PORT || settings.application.port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -26,7 +27,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
-app.use(express.session());
+//app.use(express.session());
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -49,36 +50,6 @@ routes['print'] = function (req, res) {
         else {
             routes['onError'](req, res, "print", "You must specify a URL.");
         }
-
-        //var delay = 1000;
-        //if (req.body.delay) {
-        //    delay = req.body.delay;
-        //    if (IsNumeric(delay)) {
-        //        delay = parseInt(delay);
-        //    }
-        //    else {
-        //        delay = 1000;
-        //        req.params.infoMessage = "Delay was non-numeric.  Defaulting to 1000 ms";
-        //    }
-        //}
-        //else {
-        //    delay = 1000;
-        //}
-
-        //var pedelay = 1000;
-        //if (req.body.pedelay) {
-        //    pedelay = req.body.pedelay;
-        //    if (IsNumeric(pedelay)) {
-        //        pedelay = parseInt(pedelay);
-        //    }
-        //    else {
-        //        pedelay = 1000;
-        //        req.params.infoMessage = "Pre-execution delay was non-numeric.  Defaulting to 1000 ms";
-        //    }
-        //}
-        //else {
-        //    pedelay = 1000;
-        //}
 
         var imageformat = "png"; //default
         if (req.body.imageformat) {
@@ -263,7 +234,6 @@ routes['print'] = function (req, res) {
         //Render Query Form without any results.
         res.render('print', { breadcrumbs: [{ link: "/print", name: "Home" }, { link: "", name: "Print" }] });
     }
-
 };
 
 
@@ -275,10 +245,7 @@ routes['print'] = function (req, res) {
 app.get('/', function (req, res) { res.redirect('/print') });
 
 //Print API
-app.get('/print', routes['print']);
-
-//Post Options
-app.post('/print', routes['print']);
+app.all('/print', routes['print']);
 
 
 //create server
