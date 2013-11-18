@@ -4,6 +4,6 @@ var settings = {}
 settings.application = {};
 
 //node.js application port settings
-settings.application.port = 80;
+settings.application.port = 3000;
 
 module.exports = settings;

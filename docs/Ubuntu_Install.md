@@ -49,6 +49,7 @@ from the console:
 ###Optionally modify settings.js file
 
 Specify the port you'd like to use.  If you want to add the IP or servername to use, you can specify that in the settings file also.
+
 	settings.application.port = 80;
 	settings.application.ip = null;
 
@@ -91,6 +92,6 @@ Edit the crontab file to add your own script to the list of items to be schedule
 
 	crontab -e
 
-Once open, add an entry (every hour, delete pngs from output folder)....currently not working:
+Once open, add an entry (every hour, delete pngs from output folder):
 
-	0 * * * * find ~/phantasm/output -mmin +59 -exec rm -f {} \;
+	0 * * * * find /home/ubuntu/phantasm/output/* -mmin +59 -exec rm -f {} \;
