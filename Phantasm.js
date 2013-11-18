@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/output", express.static(path.join(__dirname, 'output')));
 
 //Google Analytics
-ga.initialize(settings.ga.key, '54.213.94.50', function () {});
+ga.initialize(settings.ga.key, settings.ga.domain, function () {});
 
 var exportImage = flow.define(
     function (req, res) {
@@ -63,6 +63,9 @@ var exportImage = flow.define(
                 common.respond(this.res, this.args);
                 return;
             }
+
+            //Google Analytics
+            GATrackEvent("Print", "URL", this.args.url); //Analytics
 
 
             //Which view to render in jade
@@ -280,3 +283,12 @@ function waitFor(testFx, onReady, timeOutMillis) {
             }
         }, 250); //< repeat check every 250ms
 };
+
+//Google Analytics function
+function GATrackEvent(category, action, label) {
+    ga.trackEvent(category, action, label, function (err, resp) {
+        if (!err && resp.statusCode === 200) {
+            common.log('Event has been tracked with Google Analytics');
+        }
+    });
+}
