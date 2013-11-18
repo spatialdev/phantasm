@@ -10,6 +10,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , flow = require('flow')
+  , ga = require('nodealytics')
   , shortId = require('shortid');
 
 var app = express();
@@ -30,6 +31,9 @@ app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/output", express.static(path.join(__dirname, 'output')));
+
+//Google Analytics
+ga.initialize(settings.ga.key, '54.213.94.50', function () {});
 
 var exportImage = flow.define(
     function (req, res) {

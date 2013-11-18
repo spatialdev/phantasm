@@ -9,6 +9,7 @@
     "flow": "*",
     "less-middleware": "*",
     "node-phantom": "*",
-    "shortid": "~2.0.0"
+    "shortid": "~2.0.0",
+	"nodealytics: "*"
   }
 }
