@@ -29,7 +29,7 @@ Before an image of the page you've specified is created, you have a chance to pa
 #### url:
 The most simple scenario is to provide a URL to the service.  The URL will load in an invisible browser on the server and PhantomJS will output an image.
 
-		url: 'http://www.google.com'
+	url: 'http://www.google.com'
 
 #### imageformat:
 
@@ -151,8 +151,8 @@ Here's how you might do that.
 
 ####Example of print.html
 You create one or more print templates and make it accessible to the phantasm server (use a publicly accessible URL for example).
-This print template loads jQuery, jQueryUI, the Leaflet API, my normal site's .css file as well as a special print.css that overrides some styles that we may not want to see
-in a printed version (we hide checkbox controls in the print.css for example).
+This example print template loads jQuery, jQueryUI, the Leaflet API, my normal site's .css file as well as a special print.css that overrides some styles that I don't want to see
+in a printed version (such as hiding checkbox controls).
 
 If your page needs d3, then load the d3 library in your template.
 Lastly, the map div needs to be initialized as a leaflet map.  I do this in printLoad.js.
@@ -251,8 +251,8 @@ Here's how you might do that.
 
 ####Example of print.html
 You create one or more print templates and make it accessible to the phantasm server (use a publicly accessible URL for example).
-This print template loads Dojo, the ESRI JavaScript API, my normal site's .css file as well as a special print.css that overrides some styles that we may not want to see
-in a printed version (we hide checkbox controls in the print.css for example).
+This example print template loads Dojo, the ESRI JavaScript API, my normal site's .css file as well as a special print.css that overrides some styles that I don't want to see
+in a printed version (such as hiding checkbox controls).
 
 If your page needs d3, then load the d3 library in your template.
 Lastly, the map div needs to be initialized as an ESRI map.  I do this in printLoad.js.
