@@ -112,6 +112,7 @@ OK.  So we only get the left side.  Cool.
 ###Leaflet Map example
 OK.  A user is on my site.  They're looking at a map and turning on and off filters and zooming and panning.  
 I want to capture the state of their map as well as some charts they've created using dynamic input and export it as a PNG.
+
 Q: How?
 
 A: Using javascript, steal their DOM nodes and pass them to an HTML shell page waiting on your server. (a print template)
@@ -135,9 +136,9 @@ Here's how you might do that.
 		//Do something with data - the JSON object
 	});
 
-####Example of http://www.mydomain.com/printTemplates/print.html
+####Example of print.html
 You create one or more print templates and make it accessible to the phantasm server (use a publicly accessible URL for example).
-This print template loads jQuery, jQueryUI, the Leaflet API, my normal site .css file as well as a special print.css that overrides some styles that we may not want to see
+This print template loads jQuery, jQueryUI, the Leaflet API, my normal site's .css file as well as a special print.css that overrides some styles that we may not want to see
 in a printed version (we hide checkbox controls in the print.css for example).
 
 If your page needs d3, then load the d3 library in your template.
@@ -206,6 +207,7 @@ Wow.  It's exactly what the user was looking at!
 
 OK.  A user is on a different site - one with a map built using the ESRI JavaScript API.  They're looking at a map and turning on and off filters and zooming and panning.  
 I want to capture the state of their map as well as some charts they've created using dynamic input and export it as a PNG.
+
 Q: How?
 
 A: Same thing as above. Using javascript, steal their DOM nodes and pass them to an HTML shell page waiting on your server. (a print template)
@@ -234,9 +236,9 @@ Here's how you might do that.
 		}
     });
 
-####Example of http://www.mydomain.com/printTemplates/print.html
+####Example of print.html
 You create one or more print templates and make it accessible to the phantasm server (use a publicly accessible URL for example).
-This print template loads jQuery, jQueryUI, the Leaflet API, my normal site .css file as well as a special print.css that overrides some styles that we may not want to see
+This print template loads Dojo, the ESRI JavaScript API, my normal site's .css file as well as a special print.css that overrides some styles that we may not want to see
 in a printed version (we hide checkbox controls in the print.css for example).
 
 If your page needs d3, then load the d3 library in your template.
