@@ -219,13 +219,6 @@ var exportImage = flow.define(
         this.args.featureCollection = { image: this.outputURL + this.filename };
 
         common.respond(this.res, this.args);
-        
-        //else if (format == "json") {
-        //    //Respond with JSON
-        //    //res.header("Content-Type:", "application/json");
-        //    res.writeHead(200, { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        //    res.end(JSON.stringify({ image: outputURL + filename }));
-        //}
     }
 )
 
@@ -243,25 +236,6 @@ app.all('/print', exportImage);
 http.createServer(app).listen(app.get('port'), app.get('ipaddr'), function () {
     console.log('Express server listening on IP:' + app.get('ipaddr') + ', port ' + app.get('port'));
 });
-
-
-//Utilities
-
-//Determine if a string contains all numbers.
-function IsNumeric(sText) {
-    var ValidChars = "0123456789";
-    var IsNumber = true;
-    var Char;
-    sText.replace(/\s+/g, '')
-
-    for (i = 0; i < sText.length && IsNumber == true; i++) {
-        Char = sText.charAt(i);
-        if (ValidChars.indexOf(Char) == -1) {
-            IsNumber = false;
-        }
-    }
-    return IsNumber;
-}
 
 
 /**
