@@ -32,8 +32,8 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/output", express.static(path.join(__dirname, 'output')));
 
-//Google Analytics
-ga.initialize(settings.ga.key, settings.ga.domain, function () {});
+//Google Analytics - if settings are blank, then won't initialize
+if(settings.ga && settings.ga.key && settings.ga.domain) ga.initialize(settings.ga.key, settings.ga.domain, function () {});
 
 var exportImage = flow.define(
     function (req, res) {
@@ -286,9 +286,12 @@ function waitFor(testFx, onReady, timeOutMillis) {
 
 //Google Analytics function
 function GATrackEvent(category, action, label) {
-    ga.trackEvent(category, action, label, function (err, resp) {
-        if (!err && resp.statusCode === 200) {
-            common.log('Event has been tracked with Google Analytics');
-        }
-    });
+    //Make sure settings are specified.  Otherwise, don't send
+    if (settings.ga && settings.ga.key && settings.ga.domain) {
+        ga.trackEvent(category, action, label, function (err, resp) {
+            if (!err && resp.statusCode === 200) {
+                common.log('Event has been tracked with Google Analytics');
+            }
+        });
+    }
 }
