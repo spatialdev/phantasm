@@ -24,34 +24,47 @@ Before an image of the page you've specified is created, you have a chance to pa
 [PhantomJS](http://phantomjs.org/index.html)
 
 
-## Usage
+## Parmaters
 
-Using the form on the page at http://localhost:3000, enter a URL to a page in the URL textbox (remember to include the http://)
-
-Click Submit.  After a few seconds, you should see the rendered image at the bottom of the screen (if you've chosen png, jpg or gif formats).
-
-Use the options (detailed below) to tweak the experience.
-
-## Options
-#### URL:
+#### url:
 The most simple scenario is to provide a URL to the service.  The URL will load in an invisible browser on the server and PhantomJS will output an image.
 
-#### Image Format:
+		url: 'http://www.google.com'
+
+#### imageformat:
+
+	imageformat: 'png' | 'jpg' | 'gif' | 'pdf'
+
 PhantomJS can output .png, .jpg, .gif and .pdf
 
-#### Response Format:
-html or json
+#### format:
 
-html - render the result to the web form that was used to submit the request.  Just used to test out your settings mostly.
+	format: 'html' | 'json'
 
-json - will return a json object with a path to the output image.
+html - Will render the result to the web form that was used to submit the request.  Just used to test out your settings mostly.
 
-#### Selector:
+json - Will return a json object with a path to the output image.  Used when programmatically calling service.
+
+#### selector:
 Use a CSS selector to only return an image for the matching node's area. #mapDiv would only return an image showing the area bound by a div with the ID of 'mapDiv', for example.
+	
+	selector: '#mapDiv'
 
-#### Pre-Execution Javascript:
+#### viewportheight:
+The height, in px, that the invisible browser on the server should be.
+
+	viewportheight: 800
+
+#### viewportwidth:
+The width, in px, that the invisible browser on the server should be.
+
+	viewportwidth: 1200
+
+#### codeblock:
 This is the good part.
 You can send javascript code to be executed in the page that's been loaded before the image is captured.  Use this to modify the page however you'd like.  The trick to capturing a user's page as they see is is to steal the DOM nodes you'd like (by cloning them in javascript) and injecting them into a print template HTML page that you've set up.
+
+	codeblock: '$("#printContainer").append("<div>Hello World!</div>");'
 
 ## Examples
 
