@@ -242,7 +242,7 @@ This print template loads Dojo, the ESRI JavaScript API, my normal site's .css f
 in a printed version (we hide checkbox controls in the print.css for example).
 
 If your page needs d3, then load the d3 library in your template.
-Lastly, the map div needs to be initialized as a leaflet map.  I do this in printLoad.js.
+Lastly, the map div needs to be initialized as an ESRI map.  I do this in printLoad.js.
 
 	<!DOCTYPE html>
 	<html xmlns="http://www.w3.org/1999/xhtml">
