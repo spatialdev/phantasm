@@ -22,7 +22,6 @@ app.set('ipaddr', settings.application.ip);
 app.set('port', process.env.PORT || settings.application.port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.enable("jsonp callback");
 app.use(express.favicon());
 app.use(express.bodyParser());
 app.use(express.methodOverride());

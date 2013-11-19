@@ -4,27 +4,30 @@ common.formatters = {};
 
 common.respond = function (res, args) {
     //Write out a response as JSON or HTML with the appropriate arguments.  Add more formats here if desired
-    debugger;
     if (!args.format || args.format.toLowerCase() == "html") {
         //Determine sample request based on args
         res.render(args.view, args);
     }
     else if (args.format && (args.format.toLowerCase() == "json" || args.format.toLowerCase() == "geojson" || args.format.toLowerCase() == "esrijson" || args.format.toLowerCase() == "j")) {
         //Responsd with GeoJSON (or JSON if there is no geo)
+
+        //Respond with JSON
+        res.writeHead(200, { 'content-type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+
         if (args.errorMessage) {
-            res.jsonp({ error: args.errorMessage });
+            res.end(JSON.stringify({ error: args.errorMessage }));
         }
         else {
-            res.jsonp(args.featureCollection);
+            res.end(JSON.stringify(args.featureCollection));
         }
     }
     else {
         //If unrecognized format is specified
         if (args.errorMessage) {
-            res.jsonp({ error: args.errorMessage });
+            res.end(JSON.stringify({ error: args.errorMessage }));
         }
         else {
-            res.jsonp(args.featureCollection);
+            res.end(JSON.stringify(args.featureCollection));
         }
     }
 }
