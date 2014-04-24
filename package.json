@@ -1,15 +1,15 @@
 {
   "name": "phantasm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "supervisor": "*",
     "express": "3.3.4",
-    "jade": "*",
+    "jade": "0.35.0",
     "flow": "*",
-    "less-middleware": "*",
+    "less-middleware": "0.1.14",
     "node-phantom": "*",
     "shortid": "~2.0.0",
-	"nodealytics": "*"
+	  "nodealytics": "*"
   }
 }

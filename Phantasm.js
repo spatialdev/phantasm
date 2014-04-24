@@ -121,7 +121,6 @@ var exportImage = flow.define(
     },
     function (status) {
         common.log("Opened Page...");
-
         //Let page render before continuing
 
             this.page.onConsoleMessage = function (msg) {
@@ -135,7 +134,7 @@ var exportImage = flow.define(
                 if (args.selector) console.log("selector: " + args.selector);
                // console.log("args: " + args);
                 var result = {};
-
+                
                 //Execute any pre-rendering javascript here
                 if (args.codeblock) {
                     console.log("About to execute pre-render logic.");

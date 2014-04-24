@@ -62,11 +62,11 @@ Nodemon monitors your node project, and will automatically restart your node pro
 ###Run the project temporarily using node or nodemon
 Start the project (assuming installs have all succeeded and you've created the settings.js file)
 	
-	node app.js
+	node Phantasm.js
 
 -or-
 
-	nodemon app.js
+	nodemon Phantasm.js
 
 
 ###To Run as a 'service' (keeps running after you log off the machine), install forever module
