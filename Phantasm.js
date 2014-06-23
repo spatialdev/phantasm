@@ -195,25 +195,27 @@ var exportImage = flow.define(
             50000); //The Timeout milliseconds.  After this, give up and move on
 
 
-        }, this.args.delay); //Built in delay to let the execution block have a chance to send out requests.
+        }, 1000); //Built in delay to let the execution block have a chance to send out requests.
 
 
     },
     function (status) {
-        //Callback for when all initial pageload resource requests have ended.
+      //Callback for when all initial pageload resource requests have ended.
 
-        this.outputURL = this.req.protocol + "://" + this.req.get('host') + "/output/";
-        this.filename = 'phantomoutput' + shortId.generate() + '.' + this.args.imageformat;
+      this.outputURL = this.req.protocol + "://" + this.req.get('host') + "/output/";
+      this.filename = 'phantomoutput' + shortId.generate() + '.' + this.args.imageformat;
+
+      setTimeout(function () {
         if (this.clipResult && this.clipResult.clipRect) {
-            //Clip
-            this.page.set('clipRect', { width: this.clipResult.clipRect.width, height: this.clipResult.clipRect.height, top: this.clipResult.clipRect.top, left: this.clipResult.clipRect.left }, this);
+          //Clip
+          this.page.set('clipRect', { width: this.clipResult.clipRect.width, height: this.clipResult.clipRect.height, top: this.clipResult.clipRect.top, left: this.clipResult.clipRect.left }, this);
         }
         else {
-            //Don't clip         
-            common.log("about to render page:");
-            this(); //just flow
+          //Don't clip
+          common.log("about to render page:");
+          this(); //just flow
         }
-        //},pedelay); //wait a sec before executing any pre-code stuff.
+      }, this.args.delay); //wait before rendering.
     },
     function (err) {
         return this.page.render('output/' + this.filename, this);
