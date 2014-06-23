@@ -78,7 +78,8 @@ var exportImage = flow.define(
 
             //DO IT
             common.log("Creating Phantom Instance...");
-            phantom.create(this); //flow to next function
+
+            phantom.create(this, {parameters:{'ignore-ssl-errors':'yes'}}); //flow to next function
         }
         else {
             this.args.view = "print";
@@ -88,13 +89,14 @@ var exportImage = flow.define(
         }
     },
     function (err, ph) {
+
         //coming from phantom.create
         common.log("Creating Page Object...");
         this.ph = ph;
         return ph.createPage(this); //flow to next function
     },
     function (err, page) {
-        //set size
+       //set size
         this.page = page;
         common.log("Setting Page size...");
         this.page.set('viewportSize', { width: this.args.viewportwidth, height: this.args.viewportheight }, this); //flow to next function
