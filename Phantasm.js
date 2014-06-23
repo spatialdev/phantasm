@@ -75,6 +75,7 @@ var exportImage = flow.define(
             this.args.imageformat = this.args.imageformat || "png";
             this.args.viewportheight = this.args.viewportheight || 800;
             this.args.viewportwidth = this.args.viewportwidth || 1200;
+            this.args.delay = this.args.delay || 1000; //ms
 
             //DO IT
             common.log("Creating Phantom Instance...");
@@ -194,7 +195,7 @@ var exportImage = flow.define(
             50000); //The Timeout milliseconds.  After this, give up and move on
 
 
-        }, 1000); //Built in delay to let the execution block have a chance to send out requests.
+        }, this.args.delay); //Built in delay to let the execution block have a chance to send out requests.
 
 
     },
