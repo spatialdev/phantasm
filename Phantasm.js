@@ -201,7 +201,7 @@ var exportImage = flow.define(
     },
     function (status) {
       //Callback for when all initial pageload resource requests have ended.
-
+      var flo = this;
       this.outputURL = this.req.protocol + "://" + this.req.get('host') + "/output/";
       this.filename = 'phantomoutput' + shortId.generate() + '.' + this.args.imageformat;
 
@@ -213,7 +213,7 @@ var exportImage = flow.define(
         else {
           //Don't clip
           common.log("about to render page:");
-          this(); //just flow
+          flo(); //just flow
         }
       }, this.args.delay); //wait before rendering.
     },
