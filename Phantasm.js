@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-var phantom = require('node-phantom');
+var phantom = require('phantom');
 
 var express = require('express')
   , settings = require('./settings')
@@ -64,7 +64,7 @@ var exportImage = flow.define(
             }
 
             //Google Analytics
-            GATrackEvent("Print", "URL", this.args.url); //Analytics
+            //sGATrackEvent("Print", "URL", this.args.url); //Analytics
 
 
             //Which view to render in jade
@@ -89,14 +89,14 @@ var exportImage = flow.define(
             common.respond(this.res, this.args);
         }
     },
-    function (err, ph) {
+    function (ph) {
 
         //coming from phantom.create
         common.log("Creating Page Object...");
         this.ph = ph;
         return ph.createPage(this); //flow to next function
     },
-    function (err, page) {
+    function (page) {
        //set size
         this.page = page;
         common.log("Setting Page size...");

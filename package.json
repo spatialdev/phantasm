@@ -8,8 +8,8 @@
     "jade": "0.35.0",
     "flow": "*",
     "less-middleware": "0.1.14",
-    "node-phantom": "0.2.5",
     "shortid": "~2.0.0",
-	  "nodealytics": "*"
+	"nodealytics": "*",
+    "phantom": "0.7.2"
   }
 }
