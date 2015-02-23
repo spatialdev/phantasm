@@ -1,4 +1,4 @@
-phantasm - current version compatible with v1.9.7
+phantasm - current version compatible with v1.9.2
 ========
 
 ## Overview
@@ -21,7 +21,7 @@ Before an image of the page you've specified is created, you have a chance to pa
 
 ## Dependencies
 
-[PhantomJS](http://phantomjs.org/index.html) 1.9.7
+[PhantomJS](http://phantomjs.org/index.html)
 
 
 ## Parmaters
