@@ -34,6 +34,21 @@ Phantasm - Ubuntu Installation
 ###Install Phantom Font dependency
 	sudo apt-get install fontconfig
 
+(update - only installing the above font library was causing issues with non-serif fonts, and probably others. So add more then clear font cache. Did 2 things.  1 - Check /etc/apt/sources.list and uncomment out the following lines.  Then apt-get update)
+
+	# /etc/apt/sources.list should contain these:
+	# deb http://us.archive.ubuntu.com/ubuntu/ lucid multiverse
+	# deb-src http://us.archive.ubuntu.com/ubuntu/ lucid multiverse
+	# deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates multiverse
+	# deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates multiverse
+
+	sudo apt-get update
+	sudo apt-get install libfreetype6 libfreetype6-dev libfontconfig 
+	 
+        sudo apt-get install fontconfig libfontconfig-dev libfontenc-dev libfontenc1 libxfont-dev libxfont1 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic ttf-mscorefonts-installer libxext-dev libwayland-dev
+        
+        sudo fc-cache -fv
+
 ###Create a directory for the project and clone with GIT (or download [.zip file](https://github.com/apollolm/phantasm/archive/master.zip) from GitHub
 
 	cd ~/ 
