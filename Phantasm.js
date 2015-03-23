@@ -110,13 +110,13 @@ var exportImage = flow.define(
         //Setup Resource Listeners
         this.page.onResourceRequested = function (request) {
             resources[request.id] = request.stage;
-            common.log("outgoing request sent.");
+            common.log("outgoing request - " + request.url);
         };
 
         //When a resource has been recieved, remove it from the list
         this.page.onResourceReceived = function (request) {
             resources[request.id] = request.stage;
-            common.log("outgoing response recieved.");
+            common.log("outgoing response recieved for " + request.url);
         };
 
         common.log("Opening Page...");
