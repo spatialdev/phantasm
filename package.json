@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "supervisor": "*",
-    "express": "3.3.4",
+    "express": "4.17.1",
     "jade": "0.35.0",
     "flow": "*",
     "less-middleware": "0.1.14",
