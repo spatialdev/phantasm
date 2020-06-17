@@ -5,6 +5,8 @@ phantasm - current version compatible with v1.9.2
 
 Phantasm is a node.js web service for exporting html web pages to PDF, PNG, JPG or GIF.  It is mainly a wrapper around phantomjs.
 
+PLEASE NOTE: Due to current vulnerabilities, the current version should not be used.
+
 Required arguments are:
 
 * URL - a URL to be loaded
